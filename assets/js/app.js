@@ -65,11 +65,23 @@ $(document).ready(function () {
 
                     $("#empty-heart").on("click", function () {
                         $(this).toggleClass("red");
-                        favArray.push(response.data[i].id)
-                        console.log(favArray);
+                        let questoId = response.data[i].id;
+                        if ($(this).attr("class") !== "red" && !favArray.includes(questoId)) {
+
+                            favArray.push(questoId)
+                            console.log(favArray);
+                        }
+                        else {
+
+                            console.log(favArray.indexOf(questoId))
+                            favArray.splice(questoId, 1)
+                            //  favArray.indexOf(response.data[i]).splice(response.data[i], 1)
+                            console.log(favArray);
+                        }
+
 
                         //document.cookie = JSON.stringify(favArray);
-                        document.cookie = favArray;
+                        // document.cookie = favArray;
 
                     })
 
@@ -138,10 +150,10 @@ $(document).ready(function () {
     $("#show-fav").on("click", function () {
         $("#images").empty();
         $("#load_more").hide();
-        let savedArray = document.cookie;
-        savedArray = savedArray.split(",")
-        for (let j = 0; j < savedArray.length; j++) {
-            itemId = savedArray[j];
+        //let savedArray = document.cookie;
+        //savedArray = savedArray.split(",")
+        for (let j = 0; j < favArray.length; j++) {
+            itemId = favArray[j];
             queryUrl = `https://api.giphy.com/v1/gifs/${itemId}?api_key=${apiKey}`;
 
 
