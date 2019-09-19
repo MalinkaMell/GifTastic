@@ -1,6 +1,7 @@
 $(document).ready(function () {
     $("#load_more").hide();
-
+    $("#clear-all").hide();
+    $("#show-fav").hide();
     let apiKey = "DET5yjWOL7o3DyZDPcvkTj9qpsisIJKV";
     let limit = 10;
     let offset = 0;
@@ -12,7 +13,10 @@ $(document).ready(function () {
 
     //clicking query buttons and here where is the magic happens
     $("body").on("click", ".query-button", function () {
+
         $("#load_more").show();
+        $("#clear-all").show();
+   
         // offset = 0;
         topic = $(this).val();
         if ($(this).attr("id") === "load_more") {
@@ -57,22 +61,27 @@ $(document).ready(function () {
                     imgDiv.append(p);
                     p.attr("class", "card-footer text-muted text-center");
                     p.html(`<small>Rating: ${response.data[i].rating}</small>
-                    <button  id="empty-heart" class=" float-right"><i class="fas fa-heart " ></i></button>`);
+                    <button  id="empty-heart" class=" float-right" data-toggle="tooltip" title="Add to favorites!">
+                    <i class="fas fa-heart " ></i></button>`);
 
                     //---------- add to favorites is a toggle, click once - added, click second time - removed ---------------- //
                     //have to write functionality to check if the items ID is in the array, and if it it, delete it
 
 
                     $("#empty-heart").on("click", function () {
+                        $("#show-fav").show();
                         $(this).toggleClass("red");
                         let questoId = response.data[i].id;
+                        
                         if ($(this).attr("class") !== "red" && !favArray.includes(questoId)) {
-
+                            $(this).attr("title", "Remove from favorites!")
+                            
                             favArray.push(questoId)
                             console.log(favArray);
                         }
                         else {
-
+                            console.log($(this).attr("title"))
+                            $(this).attr("title", "Add to favorites!")
                             console.log(favArray.indexOf(questoId))
                             favArray.splice(questoId, 1)
                             //  favArray.indexOf(response.data[i]).splice(response.data[i], 1)
@@ -150,8 +159,6 @@ $(document).ready(function () {
     $("#show-fav").on("click", function () {
         $("#images").empty();
         $("#load_more").hide();
-        //let savedArray = document.cookie;
-        //savedArray = savedArray.split(",")
         for (let j = 0; j < favArray.length; j++) {
             itemId = favArray[j];
             queryUrl = `https://api.giphy.com/v1/gifs/${itemId}?api_key=${apiKey}`;
@@ -163,23 +170,35 @@ $(document).ready(function () {
             })
                 .then(function (response) {
 
-
-                    // $("#images").append(itemId)
                     let imgDiv = $("<div>");
                     imgDiv.attr("class", "card m-2");
                     let newImage = $("<img>");
                     newImage.attr("src", response.data.images.fixed_height_still.url);
-                    newImage.attr("class", "card-img-top ");
+                    newImage.attr("class", "card-img-top " + itemId);
                     newImage.attr("data-state", "still")
                     $("#images").prepend(imgDiv);
                     imgDiv.append(newImage);
                     console.log(response.data.id);
 
+                    //clicking on the image, toggling status
+                    $("." + itemId).on("click", function () {
 
+                        state = newImage.attr("data-state");
+
+                        if (state === "still") {
+                            newImage.attr("src", response.data.images.fixed_height.url);
+                            newImage.attr("data-state", "animate")
+                        }
+                        if (state === "animate") {
+
+                            newImage.attr("src", response.data.images.fixed_height_still.url);
+                            newImage.attr("data-state", "still")
+                        }
+                    })
 
                 })
                 .then(function (error) {
-                    // console.log(error);
+               //     console.log(error);
                 })
 
         }
