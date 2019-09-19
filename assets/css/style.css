@@ -1,0 +1,22 @@
+.navbar-toggler {
+    margin: 0 auto!important;
+}
+
+.bg-gray {
+    background-color: #ddd
+}
+
+.img-title {
+    position:absolute; 
+    top:0; 
+    background: #eee; 
+    width:100%; 
+    text-align: center; 
+    padding:4px 0;
+    font-weight: bold;
+    text-transform: capitalize;
+
+}
+.card-footer {
+    padding: 2px!important;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GifTastic</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class=" bg-gray">
+
+    <div class="container h-100">
+        <div class="row">
+
+        </div>
+        <div class="pos-f-t  text-center">
+            <div class="collapse show " id="toggleBox">
+                <div class="bg-dark p-4">
+                    <h5 class="text-white h4 m-3">GifTastic animals</h5>
+                    <div id="glyphButtons"></div>
+                    <div class="clearfix"></div>
+                    <form id="add-topic-form" class="mt-4">
+
+                        <input type="text" id="glyph-input" placeholder="Add an animal">
+
+                        <!-- Button triggers new movie to be added -->
+                        <input id="add-glyph" type="submit" value="Add">
+                    </form>
+                </div>
+            </div>
+            <nav class="navbar navbar-dark bg-dark">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#toggleBox"
+                    aria-controls="toggleBox" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </nav>
+        </div>
+        <div class="row justify-content-center m-3">
+            <button type="button" class="query-button btn btn-success" id="load_more" data-more="load-more">
+                Load More</button>
+        </div>
+        <div class="row justify-content-center m-3" id="images">
+
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>
