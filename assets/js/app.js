@@ -5,6 +5,7 @@ $(document).ready(function () {
     let limit = 10;
     let offset = 0;
     let topic = "";
+    let favArray = [];
 
     //clicking query buttons and here where is the magic happens
     $("body").on("click", ".query-button", function () {
@@ -52,8 +53,20 @@ $(document).ready(function () {
                     imgDiv.append(newImage);
                     imgDiv.append(p);
                     p.attr("class", "card-footer text-muted text-center");
-                    p.html(`<small>Rating: ${response.data[i].rating}</small>`);
+                    p.html(`<small>Rating: ${response.data[i].rating}</small>
+                    <button  id="empty-heart" class=" float-right"><i class="fas fa-heart" ></i></button>`);
 
+
+                    $("#empty-heart").on("click", function () {
+
+                        favArray.push(response.data[i].id)
+                        console.log(favArray)
+
+
+
+
+                        //console.log(favArray)
+                    })
 
                     //clicking on the image, toggling status
                     $("." + topic + [i]).on("click", function () {
@@ -74,11 +87,12 @@ $(document).ready(function () {
                 .then(function (error) {
                     // console.log(error);
                 })
+
         }
     })
-
+    // console.log(favArray)
     //defuning topics
-    let topics = ["cats", "dogs", "bears", "horses"];
+    let topics = ["cat", "dog", "bear", "horse", "lion", "tiger", "panda", "coala", "monkey", "elephant", "boar", "sloth", "crow"];
 
     //creating new button and pushing to array
     $("#add-glyph").on("click", function () {
@@ -109,34 +123,20 @@ $(document).ready(function () {
     }
     createButtons();
 
+    $("#clear-all").on("click", function () {
+        $("#images").empty();
+        $("#load_more").hide();
+
+    })
 
 
+    $("#show-fav").on("click", function () {
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    })
 
 
 
 })
+
+

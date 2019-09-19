@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Corben:700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/f8020557a2.js"></script>
 </head>
 
 <body class=" bg-gray">
@@ -20,15 +22,22 @@
         <div class="pos-f-t  text-center">
             <div class="collapse show " id="toggleBox">
                 <div class="bg-dark p-4">
-                    <h5 class="text-white h4 m-3">GifTastic animals</h5>
+                    <h1 class="text-white m-3 text-info title">GifTastic Animals</h1>
                     <div id="glyphButtons"></div>
                     <div class="clearfix"></div>
-                    <form id="add-topic-form" class="mt-4">
 
-                        <input type="text" id="glyph-input" placeholder="Add an animal">
 
-                        <!-- Button triggers new movie to be added -->
-                        <input id="add-glyph" type="submit" value="Add">
+
+
+                    <form id="add-topic-form" class="mt-4 col-8 offset-2">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="glyph-input" placeholder="Add an animal"
+                                aria-label="Add an animal" aria-describedby="add-glyph">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-info" type="submit" id="add-glyph">Add an
+                                    animal</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -39,9 +48,14 @@
                 </button>
             </nav>
         </div>
-        <div class="row justify-content-center m-3">
-            <button type="button" class="query-button btn btn-success" id="load_more" data-more="load-more">
+        <div class="row justify-content-between p-3 m-0 bg-info">
+
+            <button type="button" class="btn btn-light" id="clear-all">
+                Clear All</button>
+            <button type="button" class="query-button btn btn-light" id="load_more" data-more="load-more">
                 Load More</button>
+            <button type="button" class="btn btn-light" id="show-fav">
+                Favorites</button>
         </div>
         <div class="row justify-content-center m-3" id="images">
 
