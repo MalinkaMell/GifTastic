@@ -6,6 +6,9 @@ $(document).ready(function () {
     let offset = 0;
     let topic = "";
     let favArray = [];
+    let itemId;
+
+    let queryUrl;
 
     //clicking query buttons and here where is the magic happens
     $("body").on("click", ".query-button", function () {
@@ -19,7 +22,7 @@ $(document).ready(function () {
             offset = 0;
         }
 
-        let queryUrl = `https://api.giphy.com/v1/gifs/search?q=${topic}&api_key=${apiKey}&limit=${limit}&offset=${offset}`;
+        queryUrl = `https://api.giphy.com/v1/gifs/search?q=${topic}&api_key=${apiKey}&limit=${limit}&offset=${offset}`;
 
         $("#load_more").attr("value", topic);
 
@@ -54,18 +57,20 @@ $(document).ready(function () {
                     imgDiv.append(p);
                     p.attr("class", "card-footer text-muted text-center");
                     p.html(`<small>Rating: ${response.data[i].rating}</small>
-                    <button  id="empty-heart" class=" float-right"><i class="fas fa-heart" ></i></button>`);
+                    <button  id="empty-heart" class=" float-right"><i class="fas fa-heart " ></i></button>`);
+
+                    //---------- add to favorites is a toggle, click once - added, click second time - removed ---------------- //
+                    //have to write functionality to check if the items ID is in the array, and if it it, delete it
 
 
                     $("#empty-heart").on("click", function () {
-
+                        $(this).toggleClass("red");
                         favArray.push(response.data[i].id)
-                        console.log(favArray)
+                        console.log(favArray);
 
+                        //document.cookie = JSON.stringify(favArray);
+                        document.cookie = favArray;
 
-
-
-                        //console.log(favArray)
                     })
 
                     //clicking on the image, toggling status
@@ -112,7 +117,7 @@ $(document).ready(function () {
     function createButtons() {
         for (let i = 0; i < topics.length; i++) {
             let newButton = $("<button>");
-            newButton.attr("class", "btn btn-light query-button m-1");
+            newButton.attr("class", "btn btn-light query-button pretty-button m-1");
             newButton.attr("value", topics[i]);
             newButton.attr("id", topics[i]);
             newButton.text(topics[i]);
@@ -131,6 +136,44 @@ $(document).ready(function () {
 
 
     $("#show-fav").on("click", function () {
+        $("#images").empty();
+        $("#load_more").hide();
+        let savedArray = document.cookie;
+        savedArray = savedArray.split(",")
+        for (let j = 0; j < savedArray.length; j++) {
+            itemId = savedArray[j];
+            queryUrl = `https://api.giphy.com/v1/gifs/${itemId}?api_key=${apiKey}`;
+
+
+            $.ajax({
+                url: queryUrl,
+                method: "GET"
+            })
+                .then(function (response) {
+
+
+                    // $("#images").append(itemId)
+                    let imgDiv = $("<div>");
+                    imgDiv.attr("class", "card m-2");
+                    let newImage = $("<img>");
+                    newImage.attr("src", response.data.images.fixed_height_still.url);
+                    newImage.attr("class", "card-img-top ");
+                    newImage.attr("data-state", "still")
+                    $("#images").prepend(imgDiv);
+                    imgDiv.append(newImage);
+                    console.log(response.data.id);
+
+
+
+                })
+                .then(function (error) {
+                    // console.log(error);
+                })
+
+        }
+
+
+
 
 
     })

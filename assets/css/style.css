@@ -44,9 +44,34 @@
 
 }
 
-.query-button {
+.pretty-button {
     box-shadow: 
     inset -1px 3px 8px 5px #17a2b8, 
     2px 5px 16px 0px #0B325E, 
     5px 5px 15px 5px rgba(193,246,255,0);
 }
+
+.pretty-button:hover{
+    box-shadow: 
+    inset -1px 3px 8px 5px #17a2b8, 
+    2px 5px 16px 0px #0B325E, 
+    5px 5px 15px 5px rgba(193,246,255,0);
+    background-color: #17a2b8;
+}
+.pretty-button:active{
+    box-shadow: 
+    inset -1px 3px 8px 5px #17a2b8, 
+    2px 5px 16px 0px #0B325E, 
+    5px 5px 15px 5px rgba(193,246,255,0);
+    background-color: #343a40;
+}
+.pretty-button:focus{
+    box-shadow: 
+    inset -1px 3px 8px 5px #17a2b8, 
+    2px 5px 16px 0px #0B325E, 
+    5px 5px 15px 5px rgba(193,246,255,0);
+    background-color: #343a40;
+    color: #17a2b8;
+    border-color: #17a2b8
+}
+.red {color: red!important}
