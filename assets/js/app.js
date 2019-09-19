@@ -16,7 +16,7 @@ $(document).ready(function () {
 
         $("#load_more").show();
         $("#clear-all").show();
-   
+
         // offset = 0;
         topic = $(this).val();
         if ($(this).attr("id") === "load_more") {
@@ -72,10 +72,10 @@ $(document).ready(function () {
                         $("#show-fav").show();
                         $(this).toggleClass("red");
                         let questoId = response.data[i].id;
-                        
+
                         if ($(this).attr("class") !== "red" && !favArray.includes(questoId)) {
                             $(this).attr("title", "Remove from favorites!")
-                            
+
                             favArray.push(questoId)
                             console.log(favArray);
                         }
@@ -183,7 +183,7 @@ $(document).ready(function () {
                     //clicking on the image, toggling status
                     $("." + itemId).on("click", function () {
 
-                        state = newImage.attr("data-state");
+                        let state = newImage.attr("data-state");
 
                         if (state === "still") {
                             newImage.attr("src", response.data.images.fixed_height.url);
@@ -198,7 +198,7 @@ $(document).ready(function () {
 
                 })
                 .then(function (error) {
-               //     console.log(error);
+                    //     console.log(error);
                 })
 
         }
