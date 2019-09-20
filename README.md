@@ -4,6 +4,8 @@
 
 In this assignment, you'll use the GIPHY API to make a dynamic web page that populates with gifs of your choice. To finish this task, you must call the GIPHY API and use JavaScript and jQuery to change the HTML of your site.
 
+Play[Playable Demo](https://malinkamell.github.io/GifTastic/)
+
 
 ### Instructions
 
@@ -28,3 +30,8 @@ In this assignment, you'll use the GIPHY API to make a dynamic web page that pop
 
 1. Deploy your assignment to Github Pages.
 1. Rejoice! You just made something really cool.
+
+
+**Optimized for 1920x1080 screen resolution and Google Chrome Version 77.0.3865.75**
+
+_Made for UOA Bootcamp, September 2019_

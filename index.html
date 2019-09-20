@@ -14,21 +14,17 @@
 </head>
 
 <body class=" bg-gray">
+    <div class="container h-100 bg-dark box">
 
-    <div class="container h-100 bg-dark">
         <div class="row justify-content-center">
             <h1 class="text-white p-4 text-info title">GifTastic Animals</h1>
         </div>
+
         <div class="pos-f-t  text-center">
-            <div class="collapse show " id="toggleBox">
+            <div class="collapse" id="toggleBox">
                 <div class="bg-dark p-4">
-                    <!--  <h1 class="text-white m-3 text-info title">GifTastic Animals</h1> -->
                     <div id="glyphButtons"></div>
                     <div class="clearfix"></div>
-
-
-
-
                     <form id="add-topic-form" class="mt-4 col-8 offset-2">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" id="glyph-input" placeholder="Add an animal"
@@ -41,27 +37,47 @@
                     </form>
                 </div>
             </div>
+
             <nav class="navbar navbar-dark bg-dark">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#toggleBox"
-                    aria-controls="toggleBox" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <button class="navbar-toggler bg-info pretty-button" type="button" data-toggle="collapse"
+                    data-target="#toggleBox" aria-controls="toggleBox" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"><i class="fas fa-caret-down fa-2x"></i></span>
                 </button>
             </nav>
+
         </div>
-        <div class="row justify-content-between p-3 m-0 bg-info">
+
+        <div class="row p-3 m-0 bg-info justify-content-around">
+
+            <div id="desc-info" class="text-center w-100 text-light">
+                <p>Click on arrow to open the menu</p>
+                <p>Click on buttons to load animated gifs from Gyphy!</p>
+                <p>You can create your own buttons by writing the term in the input box.</p>
+                <p>Click on the image to animate it.</p>
+                <p>Click on <i class="fas fa-heart"></i> to add image to your favorites.</p>
+                <h2>Enjoy!</h2>
+            </div>
 
             <button type="button" class="btn btn-light pretty-button" id="clear-all">
                 Clear All</button>
-            <button type="button" class="query-button btn btn-light pretty-button" id="load_more" data-more="load-more">
-                Load More</button>
             <button type="button" class="btn btn-light pretty-button" id="show-fav">
                 Favorites</button>
-        </div>
-        <div class="row justify-content-center m-3" id="images">
+            <button type="button" class="query-button btn btn-light pretty-button" id="load_more" data-more="load-more">
+                Load More</button>
 
         </div>
+
+        <div class="row justify-content-center m-3" id="images"></div>
+
     </div>
 
+    <footer class="footer bg-dark text-center">
+        <div class="container">
+            <span class="text-muted py-2 text-center">Made for UOA Bootcamp, September 2019</span>
+        </div>
+    </footer>
+    
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
