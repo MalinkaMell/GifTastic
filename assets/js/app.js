@@ -24,6 +24,7 @@ $(document).ready(function () {
     let favArray = [];
     let itemId;
     let queryUrl;
+    let prevValueString = [];
 
     //clicking query buttons and here where is the magic happens
     $("body").on("click", ".query-button", function () {
@@ -32,15 +33,42 @@ $(document).ready(function () {
         $("#load_more").show(); //showing load more button
         $("#clear-all").show(); //showing clear all button
 
+
+
         //assigning the value of clicked button to topic
         topic = $(this).val();
+
+
+        /*------------------------------------------
+        HOLY COW!!!!!!!!!! IT WORKS!!!!!!!!!!!!!!!!!
+        ------------------------------------------*/
+
+        //this is a trick to find out the previuosly clicked button value
+        prevValueString.push(topic);
+
         //checking if the button is load more, in that case setting offset
         if ($(this).attr("id") === "load_more") {
+            offset += 10; 
+            console.log("first if: " + queryUrl)
+        }
+        //here i am trying to check if the clicked button value is equal to the one stored in array
+        //if it is offset is + 10
+        else if ($(this).val() === prevValueString[0]) {
             offset += 10;
+        }
+        //here checking if value is no equal, and also if my array is longer than 2, 
+        //that means i've clicked the previuos more than one time and now im changing the subject
+        else if ($(this).val() !== prevValueString[0] && prevValueString.length > 2) {
+            offset = 0; // offset 0
+            prevValueString.splice(0); // emptying the array
+            prevValueString.push($(this).val()); // pushing new value
         }
         else {
             offset = 0;
         }
+
+
+
 
         //query URL
         queryUrl = `https://api.giphy.com/v1/gifs/search?q=${topic}&api_key=${apiKey}&limit=${limit}&offset=${offset}`;
@@ -141,9 +169,9 @@ $(document).ready(function () {
                         }
                     })
                 })
-               /*  .then(function (error) {
-                    // console.log(error); // if I uncoment this it shows in console anyway!
-                }) */
+            /*  .then(function (error) {
+                 // console.log(error); // if I uncoment this it shows in console anyway!
+             }) */
 
         }
     })
@@ -206,18 +234,41 @@ $(document).ready(function () {
             })
                 .then(function (response) {
                     //creating cards
+                    let p = $("<div>");
                     let imgDiv = $("<div>");
                     imgDiv.attr("class", "card m-2");
                     let newImage = $("<img>");
                     newImage.attr("src", response.data.images.fixed_height_still.url);
-                    newImage.attr("class", "card-img-top " + itemId);
+                    newImage.attr("class", "card-img-top");
+                    newImage.attr("id", itemId);
                     newImage.attr("data-state", "still")
                     $("#images").prepend(imgDiv);
                     imgDiv.append(newImage);
                     console.log(response.data.id);
 
+                    imgDiv.append(p);
+                    p.attr("class", "card-footer text-muted text-center");
+
+                    //showing rating and add to favorites button
+                    p.html(`
+                    <small>Rating: ${response.data.rating}</small>
+                    <button  id="close-button" 
+                            class=" float-right" 
+                            data-toggle="tooltip"
+                             title="Remove from favorites!">
+                    <i class="fas fa-times"></i></button>
+                    `);
+
+
+                    $("#close-button").on("click", function () {
+                        let x = $(this).closest(".card");
+                        x.remove()
+                        console.log("clicking close")
+                        let questoId = response.data.id; //grab image ID
+                        favArray.splice(questoId, 1); // removing from the array
+                    })
                     //clicking on the image, toggling status
-                    $("." + itemId).on("click", function () {
+                    $("#" + itemId).on("click", function () {
 
                         let state = newImage.attr("data-state");
 
