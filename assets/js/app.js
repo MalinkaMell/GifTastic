@@ -141,9 +141,9 @@ $(document).ready(function () {
                         }
                     })
                 })
-                .then(function (error) {
+               /*  .then(function (error) {
                     // console.log(error); // if I uncoment this it shows in console anyway!
-                })
+                }) */
 
         }
     })

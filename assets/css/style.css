@@ -2,6 +2,8 @@ html {
     position: relative;
     min-height: 100%;
   }
+
+  
   body {
     margin-bottom: 66px; /* Margin bottom by footer height */
   }
@@ -59,8 +61,13 @@ html {
     0 15px 0 #121212, 
     0 22px 30px rgba(0,0,0,0.9);
     font-family: 'Corben', cursive;
-
+    text-align: center;
 }
+
+a:hover {
+    text-decoration: none;
+}
+
 
 .pretty-button {
     box-shadow: 
