@@ -116,3 +116,14 @@ a:hover {
     outline: 0;
     color: #343a40!important;
 }
+
+.animate-it {
+    animation-name: animateIt;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes animateIt {
+    0% {color: white; position: relative; top: -5px;}
+    100% {color: #343a40; position: relative;top: 5px;}
+}

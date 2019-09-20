@@ -2,12 +2,12 @@ $(document).ready(function () {
 
     //styling the menu arrow
     $('.collapse').on('shown.bs.collapse', function () {
-        $(".navbar-toggler-icon").html(`<i class="fas fa-caret-up fa-2x"></i>`)
+        $(".navbar-toggler-icon").html(`<i class="fas fa-caret-up fa-2x animate-it"></i>`)
         console.log("uno")
     });
 
     $('.collapse').on('hidden.bs.collapse', function () {
-        $(".navbar-toggler-icon").html(`<i class="fas fa-caret-down fa-2x"></i>`)
+        $(".navbar-toggler-icon").html(`<i class="fas fa-caret-down fa-2x animate-it"></i>`)
     });
 
 
@@ -40,7 +40,7 @@ $(document).ready(function () {
 
 
         /*------------------------------------------
-        HOLY COW!!!!!!!!!! IT WORKS!!!!!!!!!!!!!!!!!
+        HOLY SHIT!!!!!!!!!! IT WORKS!!!!!!!!!!!!!!!!!
         ------------------------------------------*/
 
         //this is a trick to find out the previuosly clicked button value
@@ -67,6 +67,9 @@ $(document).ready(function () {
             offset = 0;
         }
 
+        /*------------------------------------------
+                    HAPPY DANCING!!!!
+        ------------------------------------------*/
 
 
 
@@ -125,7 +128,7 @@ $(document).ready(function () {
                     `);
 
                     //---------- add to favorites is a toggle, click once - added, click second time - removed ---------------- //
-                    //have to write functionality to check if the items ID is in the array, and if it it, delete it
+                   
 
                     //add to favorites functionality
                     $("#empty-heart").on("click", function () {
