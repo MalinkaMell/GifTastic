@@ -6,10 +6,11 @@ In this assignment, you'll use the GIPHY API to make a dynamic web page that pop
 
 ### Achieved Bonus Goals
 
+* Mobile responsive
 * "Load more" functionality
 * "Add to favorites"
 * "Remove from favorites"
-* Titles
+* Additional metadata (clicable titles)
 
 
 [Playable Demo](https://malinkamell.github.io/GifTastic/)

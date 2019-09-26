@@ -48,7 +48,7 @@ $(document).ready(function () {
 
         //checking if the button is load more, in that case setting offset
         if ($(this).attr("id") === "load_more") {
-            offset += 10; 
+            offset += 10;
             console.log("first if: " + queryUrl)
         }
         //here i am trying to check if the clicked button value is equal to the one stored in array
@@ -94,16 +94,20 @@ $(document).ready(function () {
 
                     //it's easier with bootstrap cards
                     imgDiv.attr("class", "card m-2");
-                    let cHeader = $("<p>");
+                    let cHeader = $("<a>");
                     cHeader.attr("class", "img-title text-muted");
+
 
                     //this is important: some of the images don't have a title, so i have to assign a placeholder, 
                     //otherwise my card will break
                     if (response.data[i].title !== "") {
                         cHeader.text(`${response.data[i].title}`);
+                        cHeader.attr("href", response.data[i].bitly_url)
+                        cHeader.attr("target", "_blank");
                     }
                     else {
                         cHeader.text(topic);
+                        cHeader.attr("src", "#")
                     }
                     imgDiv.append(cHeader);
                     let newImage = $("<img>");
@@ -116,6 +120,7 @@ $(document).ready(function () {
                     imgDiv.append(newImage);
                     imgDiv.append(p);
                     p.attr("class", "card-footer text-muted text-center");
+                    
 
                     //showing rating and add to favorites button
                     p.html(`
@@ -128,7 +133,7 @@ $(document).ready(function () {
                     `);
 
                     //---------- add to favorites is a toggle, click once - added, click second time - removed ---------------- //
-                   
+
 
                     //add to favorites functionality
                     $("#empty-heart").on("click", function () {
@@ -150,15 +155,11 @@ $(document).ready(function () {
                         }
 
 
-                        //huh... I was saving cookies at first, but then decided not to go that way, 
-                        //i still have a pretty cool favorites functionality :)
-                        // document.cookie = favArray;
-
                     })
 
                     //clicking on the image, switching status and animating our gifs :)
                     $("." + topic + [i]).on("click", function () {
-
+                        console.log(response.data[i])
                         let state = newImage.attr("data-state");
 
                         if (state === "still") {
@@ -216,7 +217,7 @@ $(document).ready(function () {
         $("#images").empty();
         $("#load_more").hide();
         $("#desc-info").show();
-        $(this).hide()
+        $(this).hide();
     })
 
     //favorites button: showing favorites section
