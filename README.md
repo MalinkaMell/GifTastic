@@ -1,5 +1,7 @@
 # GifTastic
 
+![Banner](assets/images/githubtpl.png)
+
 ### Overview
 
 In this assignment, you'll use the GIPHY API to make a dynamic web page that populates with gifs of your choice. To finish this task, you must call the GIPHY API and use JavaScript and jQuery to change the HTML of your site.
@@ -13,11 +15,7 @@ In this assignment, you'll use the GIPHY API to make a dynamic web page that pop
 * Additional metadata (clicable titles)
 
 
-[Playable Demo](https://malinkamell.github.io/GifTastic/)
-
-
 ### Instructions
-
 
 1. Before you can make any part of your site work, you need to create an array of strings, each one related to a topic that interests you. Save it to a variable called topics.
     1. We chose animals for our theme, but you can make a list to your own liking.
@@ -38,6 +36,11 @@ In this assignment, you'll use the GIPHY API to make a dynamic web page that pop
 1. Deploy your assignment to Github Pages.
 1. Rejoice! You just made something really cool.
 
+---
+
+**[Playable Demo](https://malinkamell.github.io/GifTastic/)**
+
+---
 
 **Optimized for 1920x1080 screen resolution and Google Chrome Version 77.0.3865.75**
 
