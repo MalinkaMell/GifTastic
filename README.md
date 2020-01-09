@@ -44,4 +44,4 @@ In this assignment, you'll use the GIPHY API to make a dynamic web page that pop
 
 **Optimized for 1920x1080 screen resolution and Google Chrome Version 77.0.3865.75**
 
-_Made for UOA Bootcamp, September 2019_
+_Made for UOA Bootcamp, Week-6, September 2019_
